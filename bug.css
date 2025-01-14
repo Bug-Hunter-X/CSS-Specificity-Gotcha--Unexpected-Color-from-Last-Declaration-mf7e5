@@ -1,0 +1,25 @@
+The following CSS code snippet demonstrates an uncommon error related to the specificity of CSS selectors:
+
+```css
+div {
+  color: blue;
+}
+
+.my-class div {
+  color: red;
+}
+
+#my-id div {
+  color: green;
+}
+
+#my-id .my-class div {
+  color: purple;
+}
+
+div {
+  color: yellow;
+}
+```
+
+The `div` element is styled multiple times with varying colors. The order of declarations matters here.  While the last `div { color: yellow; }` declaration seems to take precedence because it's the last one, it's actually a common mistake to assume this is the case. The more specific selectors will override earlier declarations, even if those appear later in the CSS file.  In this scenario, the highly specific `#my-id .my-class div` selector will be the one that determines the color, making the `color: yellow;` declaration completely ineffective.
